@@ -7,3 +7,5 @@ nbproject/genfiles.properties
 nbproject/build-impl.xml
 /dist/
 /build/
+/Retrohuset_GUI/dist/
+/Retrohuset_GUI/build/
