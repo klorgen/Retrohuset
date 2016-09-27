@@ -14,14 +14,10 @@ import java.util.logging.Logger;
 public class ZipCode {
     String connectionUrl = 
             "jdbc:sqlserver://kaysl-gruppepress.uials.no;databaseName=Retrohuset; user=javaDBAlogin; password=MEMES";
-    String zipNumber;
-    String zipName;
-    public ZipCode(String zipNumber, String zipName) {
-        this.zipNumber = zipNumber;
-        this.zipName = zipName;
+    public ZipCode() {
     }
     
-    public void add() {
+    public void add(String zipNumber, String zipName) {
         
         try (
                 Connection c = DriverManager.getConnection(connectionUrl);
