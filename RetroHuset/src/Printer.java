@@ -21,5 +21,10 @@ public class Printer {
     public Printer (double doubleValue) {
         System.out.println(doubleValue);
     }
+    public Printer (String string, Object... args) {
+        System.out.printf(string, args);
+        String test = String.format(string, args);
+        System.out.println(test);
+    }
     
 }
