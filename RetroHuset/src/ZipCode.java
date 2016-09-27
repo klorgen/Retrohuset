@@ -14,21 +14,54 @@ import java.util.logging.Logger;
 public class ZipCode {
     String connectionUrl = 
             "jdbc:sqlserver://kaysl-gruppepress.uials.no;databaseName=Retrohuset; user=javaDBAlogin; password=MEMES";
-    public ZipCode() {
-    }
     
+/**
+ * Adds a zip code to the ZipCode table
+ * @param zipNumber The Zip number to add
+ * @param zipName The Zip Name to add
+ */    
     public void add(String zipNumber, String zipName) {
-        
         try (
                 Connection c = DriverManager.getConnection(connectionUrl);
                 Statement stm = c.createStatement()) {
             String sql = "INSERT INTO ZipCode (ZipNumber, ZipName)"
                     + "VALUES ('" + zipNumber + "','" + zipName + "')";
             int rowCount = stm.executeUpdate(sql);
-            Printer print = new Printer("" + rowCount);
+            Printer print = new Printer(rowCount);
         } catch (SQLException ex) {
             Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+/**
+ * Removes from the ZipCode table with the given parameters
+ * @param zipNumber The Zip number to remove (can be an empty string)
+ * @param zipName The Zip Name to remove (can be an empty string)
+ */    
+    public void remove(String zipNumber, String zipName) {
+        try (
+                Connection c = DriverManager.getConnection(connectionUrl);
+                Statement stm = c.createStatement()) {
+            String sql = "REMOVE FROM ZipCode WHERE zipNumber=" + zipNumber + " AND zipName=" + zipName;
+            int rowCount = stm.executeUpdate(sql);
+            Printer print = new Printer(rowCount);
+        } catch (SQLException ex) {
+            Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+/**
+ * Selects from the ZipCode table with the given parameters
+ * @param zipNumber The Zip number to select from (can be an empty string)
+ * @param zipName The Zip Name to select from (can be an empty string)
+ */    
+    public void select(String zipNumber, String zipName) {
+        try (
+                Connection c = DriverManager.getConnection(connectionUrl);
+                Statement stm = c.createStatement()) {
+            String sql = "SELECT FROM ZipCode WHERE zipNumber=" + zipNumber + " AND zipName=" + zipName;
+            int rowCount = stm.executeUpdate(sql);
+            Printer print = new Printer(rowCount);
+        } catch (SQLException ex) {
+            Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
 }
