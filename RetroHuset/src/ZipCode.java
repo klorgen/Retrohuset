@@ -12,6 +12,8 @@ import java.util.logging.Logger;
  * @author Kristoffer Rogne
  */
 public class ZipCode {
+    String connectionUrl = 
+            "jdbc:sqlserver://kaysl-gruppepress.uials.no;databaseName=Retrohuset; user=javaDBAlogin; password=MEMES";
     String zipNumber;
     String zipName;
     public ZipCode(String zipNumber, String zipName) {
@@ -20,13 +22,14 @@ public class ZipCode {
     }
     
     public void add() {
-        String connectionUrl = "jdbc:sqlserver://kaysl-gruppepress.uials.no;databaseName=Retrohuset; user=javaDBAlogin; password=MEMES";
         
         try (
                 Connection c = DriverManager.getConnection(connectionUrl);
                 Statement stm = c.createStatement()) {
             String sql = "INSERT INTO ZipCode (ZipNumber, ZipName)"
                     + "VALUES ('" + zipNumber + "','" + zipName + "')";
+            int rowCount = stm.executeUpdate(sql);
+            Printer print = new Printer("" + rowCount);
         } catch (SQLException ex) {
             Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
         }
