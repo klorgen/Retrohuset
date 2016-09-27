@@ -2,6 +2,7 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -57,9 +58,13 @@ public class ZipCode {
         try (
                 Connection c = DriverManager.getConnection(connectionUrl);
                 Statement stm = c.createStatement()) {
-            String sql = "SELECT FROM ZipCode WHERE zipNumber=" + zipNumber + " AND zipName=" + zipName;
-            int rowCount = stm.executeUpdate(sql);
-            Printer print = new Printer(rowCount);
+            String sql = "SELECT FROM ZipCode WHERE ZipNumber=" + zipNumber + " AND ZipName=" + zipName;
+            ResultSet rs = stm.executeQuery(sql);
+            while(rs.next())
+            {
+                new Printer("%4d ",rs.getInt("ZipNumber"));
+                new Printer("%-10.20s ",rs.getString("ZipName"));
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
         }
