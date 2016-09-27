@@ -1,3 +1,10 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,24 +12,26 @@
  */
 
 /**
- *
+ * Represents a single product. 
  * @author Anders
  */
 public class Product {
-    
-    private String productName;
-    private int storageCount;
-    private float price;
-    
-    /**
-     * Constructor for class Product.
-     * @param productName 
-     * @param storageCount
-     * @param price 
-     */
-    public Product (String productName, int storageCount, float price) {
-        this.productName = productName;
-        this.storageCount = storageCount;
-        this.price = price;
+    public static void main(String[] args) {
+        addProduct()
     }
+    String connectionUrl = "jdbc:sqlserver://kaysl-gruppepress.uials.no;databaseName=Retrohuset; user=javaDBAlogin; password=MEMES";
+
+    public void addProduct(int categoryName, String productName, int storageCount, float price) {
+        try (
+                Connection c = DriverManager.getConnection(connectionUrl);
+                Statement stm = c.createStatement()) {
+                String categoryID = "SELECT CategoryID FROM Category WHERE CategoryName = " + categoryName;
+            ResultSet rs = stm.executeQuery("INSERT INTO Product (CategoryID, ProductName, StorageCount, Price) "
+                                            + "VALUES ('(" + categoryID + "), '" + productName + "', " 
+                                            + storageCount + "', " + price +")");
+        } catch (SQLException ex) {
+            new Printer("You fucked up");
+        }
+    }
+    
 }
