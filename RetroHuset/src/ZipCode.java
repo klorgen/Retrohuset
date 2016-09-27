@@ -30,5 +30,4 @@ public class ZipCode {
             Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }
