@@ -10,7 +10,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -19,7 +21,22 @@ import javafx.scene.control.Label;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
+    private TextField inputProductName;
+    
+    @FXML
     private Label label;
+    @FXML
+    private Button button;
+    
+    
+    @FXML
+    private Button nyknapp;
+    
+    @FXML
+    private void handleProductName(ActionEvent event){
+        System.out.println(inputProductName.getText());
+        //TODO 
+    }
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -30,6 +47,8 @@ public class FXMLDocumentController implements Initializable {
    @FXML
    private void click(ActionEvent event){
        System.out.println("HEIHOOOOO");
+       inputProductName.setText("");
+       inputProductName.setText("FUUUUUUU");
    }
     
     @Override
