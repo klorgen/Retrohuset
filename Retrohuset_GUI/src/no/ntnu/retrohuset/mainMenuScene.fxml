@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="mainMenu" prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml/1" 
+            stylesheets="mainMenuCss.css" fx:controller="no.ntnu.retrohuset.mainMenuFXMLController">
+    <children>
+        <VBox>
+        <MenuBar fx:id="menuBar" prefWidth="800">
+            <Menu fx:id="fileMenu" text="File"/>
+            <Menu fx:id="editMenu" text="Edit"/>
+            <Menu fx:id="aboutMenu" text="About"/>            
+        </MenuBar>
+        <ButtonBar fx:id="buttonBar" >
+            <buttons >
+                <Button fx:id="addProductButton" onAction="#openAddProductMenu" text="New Product" prefHeight="50" prefWidth="50"   />
+                <Button fx:id="addCustomerButton" onAction="#openAddCustomerMenu" text="New Customer"  />
+                
+            </buttons>
+            
+        </ButtonBar>
+        </VBox> 
+    </children>
+</AnchorPane>
