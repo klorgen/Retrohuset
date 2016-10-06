@@ -21,7 +21,17 @@ public class gui extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
         
-        Scene scene = new Scene(root);
+        double screenWidth = 800;
+        double screenHeight = 600;
+        
+        Scene scene = new Scene(root, screenWidth, screenHeight);
+        scene.getStylesheets().add("no/ntnu/retrohuset/mainMenuCss.css");
+        
+        stage.setFullScreen(false);
+        stage.setMaxHeight(screenHeight);
+        stage.setMinHeight(screenHeight);
+        stage.setMaxWidth(screenWidth);
+        stage.setMinWidth(screenWidth);
         
         stage.setScene(scene);
         stage.show();

@@ -1,4 +1,18 @@
+#ToolBar{
+ -fx-background-color: red; /*Debug*/
+ -fx-spacing: 20px;
+}
+
+#ToolbarButtonGroup{
+ -fx-background-color: blue;    /*Debug*/
+ -fx-spacing: 10px;
+}
+
 .button{
-    color: green;
+    -fx-color: grey;    /*Debug*/
+    -fx-min-width: 100px;
+    -fx-height: 40px;
+    -fx-padding: 10px;
 
 }
+

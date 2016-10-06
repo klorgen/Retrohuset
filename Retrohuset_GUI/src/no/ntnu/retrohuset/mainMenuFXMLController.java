@@ -38,27 +38,57 @@ public class mainMenuFXMLController implements Initializable {
     private Button addProductButton;
 
     @FXML
-    private void openAddProductMenu(ActionEvent event) {
+    private void openAddProductMenuAction(ActionEvent event) {
         System.out.println("open new prodcut goes here");
+    }
+    
+    @FXML
+    private Button editProductButton;
+    
+    @FXML
+    private void openEditProductMenuAction(ActionEvent event){
+        System.out.println("open view for edititng of products.");
     }
 
     @FXML
     private Button addCustomerButton;
 
     @FXML
-    private void openAddCustomerMenu(ActionEvent event) {
+    private void openAddCustomerMenuAction(ActionEvent event) {
         System.out.println("open new customer menu goes here");
     }
+    
+    @FXML
+    private Button editCustomerButton;
+    
+    @FXML
+    private void openEditCustomerMenuAction(ActionEvent event){
+        System.out.println("Editing customer menu appears");
+    }
+    
+    @FXML
+    private void placeholder1Action(ActionEvent event){
+        System.out.println("PH1");
+    }
+    
+    @FXML
+    private void placeholder2Action(ActionEvent event){
+        System.out.println("PH2");
+    }
+    
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        menuBar = new MenuBar();
         fileMenu = new Menu("File");
         editMenu = new Menu("Edit");
         aboutMenu = new Menu("About");
         
         addCustomerButton = new Button();
         addProductButton = new Button();
+        
+        editProductButton = new Button();
+        editCustomerButton = new Button();
         
     }
 

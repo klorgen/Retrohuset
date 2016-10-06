@@ -6,23 +6,54 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="mainMenu" prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml/1" 
-            stylesheets="mainMenuCss.css" fx:controller="no.ntnu.retrohuset.mainMenuFXMLController">
+<AnchorPane id="mainMenu"    xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="no.ntnu.retrohuset.mainMenuFXMLController">
     <children>
         <VBox>
-        <MenuBar fx:id="menuBar" prefWidth="800">
-            <Menu fx:id="fileMenu" text="File"/>
-            <Menu fx:id="editMenu" text="Edit"/>
-            <Menu fx:id="aboutMenu" text="About"/>            
-        </MenuBar>
-        <ButtonBar fx:id="buttonBar" >
-            <buttons >
-                <Button fx:id="addProductButton" onAction="#openAddProductMenu" text="New Product" prefHeight="50" prefWidth="50"   />
-                <Button fx:id="addCustomerButton" onAction="#openAddCustomerMenu" text="New Customer"  />
-                
-            </buttons>
+            <!-- System menu -->
+            <MenuBar fx:id="menuBar" prefWidth="800" >
+                <Menu fx:id="fileMenu" text="File"/>
+                <Menu fx:id="editMenu" text="Edit"/>
+                <Menu fx:id="aboutMenu" text="About"/>            
+            </MenuBar>
             
-        </ButtonBar>
-        </VBox> 
+            <!-- Button bar in main menu -->
+            <ToolBar id="ToolBar">
+                <!-- appears left on the screen -->
+                
+                <VBox fx:id="newButtonGroup" id="ToolbarButtonGroup">
+                    <Button fx:id="addProductButton" onAction="#openAddProductMenuAction" text="New Product" />                
+                    <Button fx:id="editProduct" onAction="#openEditProductMenuAction" text="Edit Product" />
+                </VBox>
+
+                <VBox fx:id="editButtonGroup" id="ToolbarButtonGroup">
+                    <Button fx:id="editCustomer" onAction="#openEditCustomerMenuAction" text="Edit Customer"/>
+                    <Button fx:id="addCustomerButton" onAction="#openAddCustomerMenuAction" text="New Customer"/>
+                </VBox>
+                
+                <VBox fx:id="placeholder1ButtonGroup" id="ToolbarButtonGroup">
+                    <Button fx:id="placeholder1" onAction="#placeholder1Action" text="Placeholder1Btn"/>
+                    <Button fx:id="placeholder2" onAction="#placeholder2Action" text="Placeholder2Btn"/>
+                </VBox>
+
+                <!-- Screendevider -->
+                <HBox HBox.hgrow="ALWAYS" ></HBox>
+                
+                <!-- grows from the right -->
+                <VBox  id="ToolbarButtonGroup">
+                    <Button text="PlaceholderBtn"/>
+                    <Button text="PlaceholderBtn"/>
+                </VBox>
+                
+                
+                
+                <HBox minWidth="1" ></HBox>  <!--push buttons right inn to the screen -->
+            </ToolBar>
+        </VBox>
+    </children>
+    
+    <children >
+        
+        
     </children>
 </AnchorPane>
