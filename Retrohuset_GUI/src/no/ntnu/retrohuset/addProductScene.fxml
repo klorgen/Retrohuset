@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="GridPane"  prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.retrohuset.addProductFXMLController">
+<AnchorPane fx:id="AnchorPane"  prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.retrohuset.addProductFXMLController">
     <children >
         <HBox>
             <VBox prefWidth="120" >
