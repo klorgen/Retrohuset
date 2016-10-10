@@ -10,15 +10,15 @@ import java.util.logging.Logger;
  *
  * @author Kay Sindre Lorgen
  */
-public class EmployeeSql {
+public class EmployeeSQL {
 
     String connectionUrl = "jdbc:sqlserver://kaysl-gruppepress.uials.no;databaseName=Retrohuset; user=javaDBAlogin; password=MEMES";
 
-    public EmployeeSql() {
+    public EmployeeSQL() {
     }
 
     /**
-     * Adds new EmployeeSql to the EmployeeSql table
+     * Adds new EmployeeSQL to the EmployeeSQL table
      *
      * @param firstName Firstname to add
      * @param surName Surname to add
@@ -42,4 +42,10 @@ public class EmployeeSql {
         }
         return rowCount;
     }
+public int removeEmployee()
+{
+    Integer rowCount = null;
+    
+    return rowCount;
+}
 }

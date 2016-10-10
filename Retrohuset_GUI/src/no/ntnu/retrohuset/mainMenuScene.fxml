@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+
+<BorderPane id="mainMenu"    xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="no.ntnu.retrohuset.mainMenuFXMLController">
+    <top>
+        <VBox>
+            <!-- System menu -->
+            <MenuBar fx:id="menuBar">
+                <Menu fx:id="fileMenu" text="File"/>
+                <Menu fx:id="editMenu" text="Edit"/>
+                <Menu fx:id="aboutMenu" text="About"/>            
+            </MenuBar>
+            
+            <!-- Button bar in main menu -->
+            <ToolBar id="ToolBar">
+                <!-- appears left on the screen -->
+                
+                <HBox HBox.hgrow="ALWAYS" />
+                <ImageView fx:id="retroLogo" fitHeight="150.0" fitWidth="200.0"  pickOnBounds="true" preserveRatio="true" />
+                
+                
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <VBox id="LeftButtonGroup">
+            <VBox fx:id="newButtonGroup" id="ToolbarButtonGroup">
+                <Button fx:id="addProductButton" onAction="#openAddProductMenuAction" text="New Product" />                
+                <Button fx:id="editProduct" onAction="#openEditProductMenuAction" text="Edit Product" />
+            </VBox>
+
+            <VBox fx:id="editButtonGroup" id="ToolbarButtonGroup">
+                <Button fx:id="editCustomer" onAction="#openEditCustomerMenuAction" text="Edit Customer"/>
+                <Button fx:id="addCustomerButton" onAction="#openAddCustomerMenuAction" text="New Customer"/>
+            </VBox>
+                
+            <VBox fx:id="placeholder1ButtonGroup" id="ToolbarButtonGroup">
+                <Button fx:id="placeholder1" onAction="#placeholder1Action" text="Placeholder1Btn"/>
+                <Button fx:id="placeholder2" onAction="#placeholder2Action" text="Placeholder2Btn"/>
+            </VBox>
+
+            <!-- Screendevider -->
+            <VBox VBox.vgrow="ALWAYS" ></VBox>
+                
+            <!-- grows from the top right -->
+            <VBox  id="ToolbarButtonGroup">
+                <Button text="PlaceholderBtn"/>
+                <Button text="PlaceholderBtn"/>
+            </VBox>
+        </VBox>
+    </left>
+    <center> 
+        <VBox>
+        <HBox>
+            <TextField fx:id="searchInput" prefHeight="40" id="noBlueFocus"/>
+            <Button fx:id="searchButton" onAction="#searchButtonAction"  text="Hit It!"/>
+        </HBox>
+        <TableView fx:id="outputArea" id="noBlueFocus"/>
+    </VBox>
+    </center>
+</BorderPane>
