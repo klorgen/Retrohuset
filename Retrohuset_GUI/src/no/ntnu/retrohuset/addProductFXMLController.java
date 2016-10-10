@@ -25,6 +25,11 @@ import javafx.stage.Stage;
  */
 public class addProductFXMLController implements Initializable {
 
+    private String newProductName;
+    private String newProductCategory;
+    private String newProductStorage;
+    private String newProductPrice;
+
     @FXML
     private AnchorPane AnchorPane;
 
@@ -60,8 +65,20 @@ public class addProductFXMLController implements Initializable {
 
     @FXML
     private void okButtonAction(ActionEvent event) {
-        System.out.println("OK");
-        //TODO create a product and send to java to be put into the database.
+        System.out.println("OK-Button-Pressed");
+        //TODO try catch
+
+        //Read the inputlines and assigning them to varaibles.
+        newProductName = inputProductName.getText();
+        inputProductName.clear();
+        newProductCategory = inputCategoryID.getText();
+        inputCategoryID.clear();
+        newProductStorage = inputStorageCount.getText();
+        inputStorageCount.clear();
+        newProductPrice = inputPrice.getText();
+        inputPrice.clear();
+
+        //TODO create new product functionality
     }
 
     @FXML
@@ -69,19 +86,15 @@ public class addProductFXMLController implements Initializable {
 
     @FXML
     private void cancelButtonAction(ActionEvent event) {
-        System.out.println("CANCEL");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to cancel?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {
             Stage stage = (Stage) AnchorPane.getScene().getWindow();
-            System.out.println(stage);
             stage.close();
         } else if (alert.getResult() == ButtonType.NO) {
             alert.close();
         }
-
-        //TODO reset all fields and return to previous scene.
     }
 
     @Override
@@ -93,6 +106,6 @@ public class addProductFXMLController implements Initializable {
         categoryIDLabel.setText("CategoryID:");
         storageCountLabel.setText("Storage count:");
         priceLabel.setText("Price:");
-        
+
     }
 }

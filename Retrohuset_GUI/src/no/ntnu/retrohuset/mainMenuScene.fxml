@@ -6,6 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
+<?import java.net.*?>
 
 <BorderPane id="mainMenu"    xmlns:fx="http://javafx.com/fxml/1" 
             fx:controller="no.ntnu.retrohuset.mainMenuFXMLController">
@@ -23,7 +24,7 @@
                 <!-- appears left on the screen -->
                 
                 <HBox HBox.hgrow="ALWAYS" />
-                    <ImageView fx:id="retroLogo" fitHeight="150.0" fitWidth="200.0"  pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="retroLogo" fitHeight="150.0" fitWidth="200.0"  pickOnBounds="true" preserveRatio="true" />
                 
                 
             </ToolBar>
