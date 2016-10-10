@@ -20,6 +20,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
@@ -88,6 +90,30 @@ public class mainMenuFXMLController implements Initializable {
         System.out.println("PH2");
     }
 
+    @FXML
+    private TextField searchInput;
+
+    @FXML
+    private TableView outputArea;
+
+    /**
+     * Reads input from user and clears the input field.
+     *
+     * @param event
+     */
+    @FXML
+    private void searchButtonAction(ActionEvent event) {
+        String input = searchInput.getText();
+        searchInput.clear();
+
+        //outputArea.setText("");
+        //TODO Search functionality to get result
+        String result = "no function yet.";
+
+       // outputArea.setText(input);
+    }
+    //------ Search section END------
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fileMenu = new Menu("File");
@@ -108,7 +134,8 @@ public class mainMenuFXMLController implements Initializable {
 
     /**
      * Open an scene with given fxml scene.
-     * @param openScene 
+     *
+     * @param openScene
      */
     private void openScene(String openScene) {
         try {
@@ -126,7 +153,6 @@ public class mainMenuFXMLController implements Initializable {
             stage.setMinHeight(screenHeight);
             stage.setMaxWidth(screenWidth);
             stage.setMinWidth(screenWidth);
-
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.show();

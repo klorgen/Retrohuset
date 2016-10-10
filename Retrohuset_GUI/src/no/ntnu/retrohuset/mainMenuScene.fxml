@@ -57,7 +57,13 @@
             </VBox>
         </VBox>
     </left>
-    <center>
-        
+    <center> 
+        <VBox>
+        <HBox>
+            <TextField fx:id="searchInput" prefHeight="40" id="noBlueFocus"/>
+            <Button fx:id="searchButton" onAction="#searchButtonAction"  text="Hit It!"/>
+        </HBox>
+        <TableView fx:id="outputArea" id="noBlueFocus"/>
+    </VBox>
     </center>
 </BorderPane>
