@@ -4,6 +4,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,20 +19,21 @@ import java.sql.Statement;
  */
 public class Product {
     public static void main(String[] args) {
-        addProduct()
+        addProduct("books", "pølsevev", 3, 40f);
     }
-    String connectionUrl = "jdbc:sqlserver://kaysl-gruppepress.uials.no;databaseName=Retrohuset; user=javaDBAlogin; password=MEMES";
+    static String connectionUrl = "jdbc:sqlserver://kaysl-gruppepress.uials.no;databaseName=Retrohuset; user=javaDBAlogin; password=MEMES";
 
-    public void addProduct(int categoryName, String productName, int storageCount, float price) {
+    public static void addProduct(String categoryName, String productName, int storageCount, float price) {
         try (
                 Connection c = DriverManager.getConnection(connectionUrl);
                 Statement stm = c.createStatement()) {
-                String categoryID = "SELECT CategoryID FROM Category WHERE CategoryName = " + categoryName;
-            ResultSet rs = stm.executeQuery("INSERT INTO Product (CategoryID, ProductName, StorageCount, Price) "
-                                            + "VALUES ('(" + categoryID + "), '" + productName + "', " 
-                                            + storageCount + "', " + price +")");
+                String categoryID = "SELECT CategoryID FROM Category WHERE CategoryName = '" + categoryName + "'";
+            int rowCount = stm.executeUpdate("INSERT INTO Product (CategoryID, ProductName, StorageCount, Price) "
+                                            + "VALUES ((" + categoryID + "), '" + productName + "', " 
+                                            + storageCount + ", " + price +")");
+            new Printer(rowCount);
         } catch (SQLException ex) {
-            new Printer("You fucked up");
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
