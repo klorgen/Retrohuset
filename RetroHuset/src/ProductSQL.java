@@ -6,20 +6,22 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Represents a single product. 
+ * Represents a single product. Has the ability to add and remove a product
  * @author Anders
  */
 public class ProductSQL {
 
     static String connectionUrl = "jdbc:sqlserver://kaysl-gruppepress.uials.no;databaseName=Retrohuset; user=javaDBAlogin; password=MEMES";
-
+    
+    /**
+     * Registers and adds a new product to the register. 
+     * @param categoryName Name of the category the item belongs to. For example 'Books'
+     * @param productName Name or description of the item
+     * @param storageCount How many items of this type are in stock
+     * @param price Price in NOK for a single item
+     * @return Row count
+     */
     public static int add(String categoryName, String productName, int storageCount, float price) {
         Integer rowCount = null;
         try (
@@ -36,6 +38,11 @@ public class ProductSQL {
         return rowCount;
     }
     
+    /**
+     * Remove a product from the product register
+     * @param productID The unique product ID of the item you want to remove
+     * @return Row count
+     */
     public static int remove(int productID) {
         
         Integer rowCount = null;
@@ -43,6 +50,7 @@ public class ProductSQL {
                 Connection c = DriverManager.getConnection(connectionUrl);
                 Statement stm = c.createStatement()) {
             rowCount = stm.executeUpdate("DELETE FROM Product WHERE productID = '" + productID + "'");
+            new Printer(rowCount);
         } catch(SQLException ex) {
             Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
 
