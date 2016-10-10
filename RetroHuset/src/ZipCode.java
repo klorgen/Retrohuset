@@ -28,7 +28,7 @@ public class ZipCode {
             String sql = "INSERT INTO ZipCode (ZipNumber, ZipName)"
                     + "VALUES ('" + zipNumber + "','" + zipName + "')";
             int rowCount = stm.executeUpdate(sql);
-            Printer print = new Printer(rowCount);
+            new Printer(rowCount);
         } catch (SQLException ex) {
             Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -44,7 +44,7 @@ public class ZipCode {
                 Statement stm = c.createStatement()) {
             String sql = "REMOVE FROM ZipCode WHERE zipNumber=" + zipNumber + " AND zipName=" + zipName;
             int rowCount = stm.executeUpdate(sql);
-            Printer print = new Printer(rowCount);
+            new Printer(rowCount);
         } catch (SQLException ex) {
             Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
         }
