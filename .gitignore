@@ -7,3 +7,4 @@ nbproject/genfiles.properties
 nbproject/build-impl.xml
 /dist/
 /build/
+/mysite/target/
