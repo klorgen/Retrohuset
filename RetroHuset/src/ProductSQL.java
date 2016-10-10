@@ -43,8 +43,7 @@ public class ProductSQL {
      * @param productID The unique product ID of the item you want to remove
      * @return Row count
      */
-    public static int remove(int productID) {
-        
+    public static int remove(int productID) {       
         Integer rowCount = null;
         try (
                 Connection c = DriverManager.getConnection(connectionUrl);
@@ -52,7 +51,7 @@ public class ProductSQL {
             rowCount = stm.executeUpdate("DELETE FROM Product WHERE productID = '" + productID + "'");
             new Printer(rowCount);
         } catch(SQLException ex) {
-            Logger.getLogger(ZipCode.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductSQL.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return rowCount;
