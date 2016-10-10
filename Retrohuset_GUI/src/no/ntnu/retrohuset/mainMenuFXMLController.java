@@ -51,33 +51,7 @@ public class mainMenuFXMLController implements Initializable {
 
     @FXML
     private void openAddProductMenuAction(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("addProductScene.fxml"));
-            Stage stage = new Stage();
-
-            double screenWidth = 1024;
-            double screenHeight = 768;
-
-            Scene scene = new Scene(root, screenWidth, screenHeight);
-            scene.getStylesheets().add("no/ntnu/retrohuset/mainMenuCss.css");
-
-            stage.setFullScreen(false);
-            stage.setMaxHeight(screenHeight);
-            stage.setMinHeight(screenHeight);
-            stage.setMaxWidth(screenWidth);
-            stage.setMinWidth(screenWidth);
-
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not open new product menu. Please contact Kay :p", ButtonType.OK);
-            alert.showAndWait();
-            if (alert.getResult() == ButtonType.OK) {
-                alert.close();
-            }
-        }
+        openScene("addProductScene.fxml");
     }
 
     @FXML
@@ -93,7 +67,7 @@ public class mainMenuFXMLController implements Initializable {
 
     @FXML
     private void openAddCustomerMenuAction(ActionEvent event) {
-        System.out.println("open new customer menu goes here");
+        openScene("AddCustomer.fxml");
     }
 
     @FXML
@@ -132,4 +106,37 @@ public class mainMenuFXMLController implements Initializable {
 
     }
 
+    /**
+     * Open an scene with given fxml scene.
+     * @param openScene 
+     */
+    private void openScene(String openScene) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(openScene));
+            Stage stage = new Stage();
+
+            double screenWidth = 1024;
+            double screenHeight = 768;
+
+            Scene scene = new Scene(root, screenWidth, screenHeight);
+            scene.getStylesheets().add("no/ntnu/retrohuset/mainMenuCss.css");
+
+            stage.setFullScreen(false);
+            stage.setMaxHeight(screenHeight);
+            stage.setMinHeight(screenHeight);
+            stage.setMaxWidth(screenWidth);
+            stage.setMinWidth(screenWidth);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not open new product menu. Please contact Kay :p", ButtonType.OK);
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.OK) {
+                alert.close();
+            }
+        }
+    }
 }
