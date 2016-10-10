@@ -16,7 +16,7 @@ public class Customer {
     private String streetName = "";
     private String faxNumber = "";
     public Customer(int customerID, String firstName, String surName,
-            String zipNumber, String streetName, String FaxNumber){
+            String zipNumber, String streetName, String faxNumber){
         this.customerID = customerID;
         this.firstName = firstName;
         this.surName = surName;
@@ -48,6 +48,9 @@ public class Customer {
 
     public int getCustomerID() {
         return customerID;
+    }
+    public String printAll(){
+        return customerID + firstName + surName + zipNumber + streetName + faxNumber;
     }
     
 }

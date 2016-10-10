@@ -44,20 +44,12 @@ public class CustomerSQL {
         }
         return rowCount;
     }
-    public int remove(String firstName, String surName, String streetName, String zipNumber, String faxNumber) {
-        if(streetName.equals("")) {
-            streetName = null;
-        } else if (zipNumber.equals("")){
-            zipNumber = null;
-        } else if (faxNumber.equals("")){
-            faxNumber = null;
-        }
+    public int remove(int customerID) {
         Integer rowCount = null;
         try (
                 Connection c = DriverManager.getConnection(connectionUrl);
                 Statement stm = c.createStatement()) {
-            String sql = "DELETE FROM Customer WHERE FirstName='" + firstName + "' AND  SurName='" + surName + "' AND StreetName='" + streetName + "'"
-                    + " AND ZipNumber='" + zipNumber + "' AND  FaxNumber='" + faxNumber + "'";
+            String sql = "DELETE FROM Customer WHERE CustomerID='" + customerID + "'";
             rowCount = stm.executeUpdate(sql);
             new Printer(rowCount);
         } catch (SQLException ex) {
@@ -65,12 +57,12 @@ public class CustomerSQL {
         }
         return rowCount;
     }
-    public ArrayList<Customer> select(int customerID) {
+    public ArrayList<Customer> selectALL() {
         ArrayList<Customer> customers = new ArrayList<>();
         try (
                 Connection c = DriverManager.getConnection(connectionUrl);
                 Statement stm = c.createStatement()) {
-            String sql = "SELECT * FROM Customer WHERE CustomerID='" + customerID + "'";
+            String sql = "SELECT * FROM Customer";
             ResultSet rs = stm.executeQuery(sql);
             while(rs.next()){
                 customers.add(new Customer(rs.getInt("CustomerID"), 
